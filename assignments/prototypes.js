@@ -42,17 +42,17 @@ function GameObject (obj) {
   this.createdAt = obj.createdAt;
   this.name = obj.name;
   this.dimensions = obj.dimensions;
-  this.destroy = function () {
-    return `${this.name} was removed from the game.`;
-  };
+  // this.destroy = function () {
+  //   return `${this.name} was removed from the game.`;
+  // };
 }
 
 function CharacterStats (obj) {
   GameObject.call(this, obj);
   this.healthPoints = obj.healthPoints;
-  this.takeDamage = function () {
-    return `${this.name} took damage.`;
-  }
+  // this.takeDamage = function () {
+  //   return `${this.name} took damage.`;
+  // };
 }
 
 function Humanoid (obj) {
@@ -60,14 +60,26 @@ function Humanoid (obj) {
   this.team = obj.team;
   this.weapons = obj.weapons;
   this.language = obj.language;
-  this.greet = function () {
-    return `${this.name} offers a greeting in ${this.language}.`
-  }
+  // this.greet = function () {
+  //   return `${this.name} offers a greeting in ${this.language}.`
+  // };
 
 }
 
+
+
 CharacterStats.prototype = Object.create(GameObject.prototype);
 Humanoid.prototype = Object.create(CharacterStats.prototype);
+
+GameObject.prototype.destroy = function () {
+  return `${this.name} was removed from the game.`;
+};
+CharacterStats.prototype.takeDamage = function () {
+  return `${this.name} took damage.`;
+};
+Humanoid.prototype.greet = function () {
+  return `${this.name} offers a greeting in ${this.language}.`;
+};
 
 
 // Test you work by un-commenting these 3 objects and the list of console logs below:
